@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index2";
+}
+@{
+    double total = 0;
+    var totalMessage = "";
+    var num1 = "";
+    var num2 = "";
+    if (IsPost)
+    {
+        num1 = Request["num1"];
+        num2 = Request["num2"];
+        total = num1.AsInt() + num2.AsInt();
+        totalMessage = "Total = " + total;
+    }
+}
+<h2>Razor template</h2>
+<form action="" method="post">
+    <table>
+        <tr>
+            <td><label for="text1">First number: </label></td>
+            <td><input type="text" name="num1" value="@num1" /></td>
+        </tr>
+        <tr>
+            <td><label for="text2">Second number: </label></td>
+            <td> <input type="text" name="num2" value="@num2" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="PT" value="Add" />
+
+            </td>
+        </tr>
+    </table>
+   
+    <p>@totalMessage</p>
+</form>
+

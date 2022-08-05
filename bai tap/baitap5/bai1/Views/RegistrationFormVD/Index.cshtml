@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student Registration Form</h2>
+@using (Html.BeginForm("FormCreate", "RegistrationFormVD"))
+{
+    <table border="1" style="border-collapse: collapse" cellpadding="5">
+        <tr>
+            <td>@Html.Label("Student Name")</td>
+            <td>@Html.TextBox("name")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Gender")</td>
+            <td>@Html.RadioButton("gender", "Male")</td>
+            <td>@Html.RadioButton("gender", "Famale")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Email")</td>
+            <td>@Html.TextBox("email")</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Address")</td>
+            <td>
+                @{
+                    IEnumerable<string> strList = new List<string> { "Hanoi", "Danang", "Tphcm" };
+                }
+                @Html.DropDownList("address", new SelectList(strList, strList.FirstOrDefault()), "--select__")
+        </td>
+    </tr>
+    <tr>    
+        <td>@Html.Label("Subjects")</td>
+        <td>
+            @Html.CheckBox("Java core") Java Core
+            @Html.CheckBox("SQL Server") SQL Server
+            @Html.CheckBox("PHP") PHP
+        </td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Username")</td>
+        <td>@Html.RadioButton("gender", "Male")</td>
+        <td>@Html.RadioButton("gender", "Famale")</td>
+    </tr>
+    <tr>
+        <td>@Html.Label("Gender")</td>
+        <td>@Html.RadioButton("gender", "Male")</td>
+        <td>@Html.RadioButton("gender", "Famale")</td>
+    </tr>
+</table>
+}

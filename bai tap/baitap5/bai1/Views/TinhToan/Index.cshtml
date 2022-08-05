@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    double result = 0;
+    var num1 = "";
+    var num2 = "";
+    var calculate = "";
+    if (IsPost)
+    {
+        num1 = Request["num1"];
+        num2 = Request["num2"];
+        calculate = Request["tinh"];
+        if (calculate == "Cộng")
+        {
+            result = num1.AsFloat() + num2.AsFloat();
+        }
+        else if (calculate == "Trừ")
+        {
+            result = num1.AsFloat() - num2.AsFloat();
+        }
+        else if (calculate == "Nhân")
+        {
+            result = num1.AsFloat() * num2.AsFloat();
+        }
+        else
+        {
+            result = num1.AsFloat() / num2.AsFloat();
+
+        }
+    }
+}
+
+<form action="" method="post" style="margin-top: 40px">
+    <p>
+        <label>Nhập số thứ 1: </label>
+        <input type="number" name="num1" value="@num1" />
+    </p>
+    <p>
+        <label>Nhập số thứ 2: </label>
+        <input type="number" name="num2" value="@num2" />
+    </p>
+    <p>
+        <label>Kết quả: </label>
+        <input type="number" name="result" value="@result" />
+    </p>
+    <p>
+        <input type="submit" name="tinh" value="Cộng" />
+        <input type="submit" name="tinh" value="Trừ" />
+        <input type="submit" name="tinh" value="Nhân" />
+        <input type="submit" name="tinh" value="Chia" />
+    </p>
+
+</form>
