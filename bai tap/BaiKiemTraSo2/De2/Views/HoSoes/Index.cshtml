@@ -1,0 +1,62 @@
+﻿@model IEnumerable<De2.Models.HoSo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    @Html.DisplayName("Nhập vào bậc lương từ: ")
+    @Html.TextBox("toBacLuong", ViewBag.toBacLuong as string)
+    @Html.DisplayName(" Đến: ")
+    @Html.TextBox("fromBacLuong", ViewBag.fromBacLuong as string)
+    <input type="submit" value="Tìm" class="btn btn-default" />
+    <br />
+    <br />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Họ tên")
+        </th>
+        <th>
+            @Html.DisplayName("Đơn vị")
+        </th>
+        <th>
+            @Html.DisplayName("Bậc lương")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Donvi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bacluong)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Mahs }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Mahs }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Mahs })
+            </td>
+        </tr>
+    }
+
+</table>
+@if (ViewBag.Sum != 0)
+{
+    <h3 class="alert alert-info">@ViewBag.Sum VND</h3>
+}

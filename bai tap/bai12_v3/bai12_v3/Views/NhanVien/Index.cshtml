@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>DANH SÁCH NHÂN VIÊN</h2>
+@using (Html.BeginForm())
+{
+    @Html.DisplayName("Tìm kiếm theo lương từ: ")
+    @Html.TextBox("from")
+    @Html.DisplayName(" Đến: ")
+    @Html.TextBox("to")
+    <input type="submit" value="Tìm" />
+}
+<br />
+@using (Html.BeginForm())
+{
+    @Html.DisplayName("Tìm kiếm theo tên: ")
+    @Html.TextBox("ten")
+    <input type="submit" value="Tìm" />
+}
+<br />
+<table border="1" style="border-collapse: collapse">
+    <tr>
+        <th>Mã nhân viên</th>
+        <th>Tên nhân viên</th>
+        <th>Phòng</th>
+        <th>
+            @Html.ActionLink("Lương", "Index", new { sapTheoLuong = ViewBag.SapTheoLuong })
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Manv</td>
+            <td>@item.Hoten</td>
+            <td>@item.Phong</td>
+            <td>@item.Luong</td>
+            <td>
+                @Html.ActionLink("Chi tiết", "ChiTiet", new { id = item.Manv.Trim() }) |
+                @Html.ActionLink("Sửa", "Sua", new { id = item.Manv.Trim() }) |
+                @Html.ActionLink("Xóa", "Xoa", new { id = item.Manv.Trim() })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Thêm nhân viên", "Them")

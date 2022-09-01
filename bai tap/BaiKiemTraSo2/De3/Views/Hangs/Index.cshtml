@@ -1,0 +1,60 @@
+﻿@model IEnumerable<De3.Models.Hang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    @Html.DisplayName("Nhập váo giá từ: ")
+    @Html.TextBox("start", ViewBag.start as string)
+    @Html.DisplayName(" Đến: ")
+    @Html.TextBox("end", ViewBag.end as string)
+    <input type="submit" value="Tìm" />
+    <hr />
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tenhang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Loai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenhang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Loai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Mahang.Trim() }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Mahang.Trim() }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Mahang.Trim() })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (ViewBag.Sum != 0)
+{
+    <div class="alert alert-info" role="alert">@ViewBag.Sum</div>
+}

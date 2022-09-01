@@ -1,0 +1,67 @@
+﻿@model De2.Models.HoSo
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Create", "Cau5"))
+{
+    @Html.AntiForgeryToken()
+
+    <table border="1" style="border-collapse: collapse">
+        <tr>
+            <td colspan="2" align="center">QUẢN LÝ HỒ SƠ</td>
+        </tr>
+        <tr>
+            <td>Mã hồ sơ</td>
+            <td>
+                @Html.EditorFor(model => model.Mahs, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mahs, "", new { @class = "text-danger" })
+            </td>
+        <tr>
+            <td>Họ tên</td>
+            <td>
+                @Html.EditorFor(model => model.Hoten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Hoten, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Đơn vị</td>
+            <td>
+                @Html.EditorFor(model => model.Donvi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Donvi, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Bậc lương</td>
+            <td>
+                @Html.EditorFor(model => model.Bacluong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bacluong, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </td>
+        </tr>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "HoSoes")
+</div>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success" role="alert">@ViewBag.Success</div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

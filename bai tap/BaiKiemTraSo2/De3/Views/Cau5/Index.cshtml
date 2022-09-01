@@ -1,0 +1,64 @@
+﻿@model De3.Models.Hang
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm("Create", "Cau5"))
+{
+    @Html.AntiForgeryToken()
+
+    <table>
+        <tr>
+            <td colspan="2" align="center">
+            </td>
+        </tr>
+        <tr>
+            <td>Mã hàng</td>
+            <td>
+                @Html.EditorFor(model => model.Mahang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mahang, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Tên hàng</td>
+            <td>
+                @Html.EditorFor(model => model.Tenhang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tenhang, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Loại hàng</td>
+            <td>
+                @Html.EditorFor(model => model.Loai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Loai, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>Giá hàng</td>
+            <td>
+                @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </td>
+        </tr>
+    </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Hangs")
+</div>
+@if (ViewBag.Error != null)
+{
+    <br/>
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

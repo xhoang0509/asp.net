@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>QUẢN LÝ BỆNH NHÂN</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+<table>
+    <tr>
+        <td>Mã bệnh nhân: </td>
+        <td>@Html.TextBox("Mabn") <font style="color:red">@ViewData["Loi1"]</font></td>
+    </tr>
+    <tr>
+        <td>Họ tên: </td>
+        <td>@Html.TextBox("Hoten") <font style="color:red">@ViewData["Loi2"]</font></td>
+    </tr>
+    <tr>
+        <td>Khoa khám: </td>
+        <td>@Html.TextBox("Khoakham") <font style="color:red">@ViewData["Loi3"]</font></td>
+    </tr>
+    <tr>
+        <td>Tuổi: </td>
+        <td>@Html.TextBox("Tuoi") <font style="color:red">@ViewData["Loi4"]</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" value="Thêm" />
+        </td>
+    </tr>
+</table>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

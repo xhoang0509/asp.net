@@ -1,0 +1,55 @@
+﻿@model IEnumerable<De8.Models.BenhNhan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    @Html.DisplayName("Nhập vào tuổi từ: ")
+    @Html.TextBox("start", ViewBag.Start as String)
+    @Html.DisplayName(" Đến: ")
+    @Html.TextBox("end", ViewBag.End as String)
+    <input type="submit" value="Tìm"/>
+}
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Khoakham)
+        </th>
+        <th>
+            @Html.ActionLink("Tuổi", "Index", new {tuoi = ViewBag.Tuoi})
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Khoakham)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuoi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Mabn }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Mabn }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Mabn })
+            </td>
+        </tr>
+    }
+
+</table>

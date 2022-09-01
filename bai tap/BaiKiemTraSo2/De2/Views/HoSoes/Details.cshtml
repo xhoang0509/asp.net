@@ -1,0 +1,42 @@
+﻿@model De2.Models.HoSo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HoSo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hoten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hoten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Donvi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Donvi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bacluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bacluong)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Mahs }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
